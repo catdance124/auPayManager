@@ -83,7 +83,7 @@ TODO:zenn で執筆
 
 ## スプレッドシートの作成
 
-1. [テンプレートのスプレッドシート](hoge)を開き、`ファイル > コピーを作成`から自分の Google フォルダにコピーする。
+1. [テンプレートのスプレッドシート](https://docs.google.com/spreadsheets/d/1E5_cDW0Zhf4-bhVYaWXAk8YkMAcJPIXllnQwhUPSLp0)を開き、`ファイル > コピーを作成`から自分の Google フォルダにコピーする。
 
 ## LINE 通知設定(任意)
 
