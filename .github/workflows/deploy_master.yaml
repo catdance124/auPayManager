@@ -3,9 +3,12 @@ name: Master-Deploy
 on:
     push:
         branches:
-            - master
+            - main
         paths:
             - "sources/**"
+    workflow_dispatch:
+        branches:
+            - main
 
 jobs:
     test:

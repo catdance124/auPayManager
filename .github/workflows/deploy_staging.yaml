@@ -3,9 +3,12 @@ name: Staging-Deploy
 on:
     push:
         branches-ignore:
-            - "master"
+            - "main"
         paths:
             - "**"
+    workflow_dispatch:
+        branches-ignore:
+            - "main"
 
 jobs:
     test:
