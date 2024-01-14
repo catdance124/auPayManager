@@ -1,0 +1,104 @@
+name: Staging-Deploy
+
+on:
+    push:
+        branches-ignore:
+            - "master"
+        paths:
+            - "**"
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        env:
+            TZ: "Asia/Tokyo"
+        steps:
+            - name: Setup repository
+              uses: actions/checkout@v3
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
+
+            - name: Install node_modules
+              run: npm ci
+
+            - name: Test using jest
+              run: |
+                  npx jest --coverage
+
+    deploy:
+        needs: test
+        runs-on: ubuntu-latest
+
+        env:
+            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+            ID_TOKEN: ${{ secrets.ID_TOKEN }}
+            REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+            CLIENT_ID: ${{ secrets.CLIENT_ID }}
+            CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+            SCRIPT_ID: ${{ secrets.STAGING_SCRIPT_ID }}
+            DEPLOYMENT_ID: ${{ secrets.STAGING_DEPLOYMENT_ID }}
+
+        steps:
+            - name: Setup repository
+              uses: actions/checkout@v3
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
+
+            - name: Install node_modules
+              run: npm ci
+
+            - name: Transpile ts -> js
+              run: npx ts-node -T build.ts
+
+            - name: Generate ~/.clasprc.json
+              run: |
+                  bash deployment/generate_clasprc.sh
+            - name: Generate ~/.clasp.json
+              run: |
+                  bash deployment/generate_claspjson.sh
+            - name: Push
+              run: |
+                  npx clasp push --force
+            - name: DEPLOY
+              run: |
+                  npx clasp deploy --deploymentId $DEPLOYMENT_ID -d Staging
+
+    docs:
+        needs: test
+        runs-on: ubuntu-latest
+        env:
+            src_dir: sources/src
+            dst_dir: docs/typedoc
+        steps:
+            - name: Setup repository
+              uses: actions/checkout@v3
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
+
+            - name: Install typedoc, typedoc-plugin-markdown
+              run: npm install -g typedoc typedoc-plugin-markdown
+            - name: Install @types/google-apps-script
+              run: npm install --save-dev @types/google-apps-script
+
+            - name: Generate Docs
+              run: typedoc --entryPoints ${src_dir} --entryPointStrategy expand --out ${dst_dir} --cleanOutputDir --plugin typedoc-plugin-markdown --disableSources --readme none
+
+            - name: Push
+              run: |
+                  git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+                  git config --global user.name "${GITHUB_ACTOR}"
+                  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+                  if (git diff --shortstat --relative=${dst_dir} | grep '[0-9]'); then \
+                    git add ${dst_dir}; \
+                    git commit -m "GitHub Actions から差分を Push"; \
+                    git push origin HEAD:${GITHUB_REF}; \
+                  fi
