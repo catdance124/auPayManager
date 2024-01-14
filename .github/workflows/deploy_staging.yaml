@@ -3,7 +3,7 @@ name: Staging-Deploy
 on:
     push:
         branches-ignore:
-            - "master"
+            - "main"
         paths:
             - "**"
 

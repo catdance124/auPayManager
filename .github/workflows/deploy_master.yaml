@@ -3,7 +3,7 @@ name: Master-Deploy
 on:
     push:
         branches:
-            - master
+            - main
         paths:
             - "sources/**"
 
