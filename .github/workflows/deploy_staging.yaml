@@ -6,6 +6,9 @@ on:
             - "main"
         paths:
             - "**"
+    workflow_dispatch:
+        branches-ignore:
+            - "main"
 
 jobs:
     test:
