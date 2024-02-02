@@ -111,7 +111,7 @@ describe("CreditCardReportSheet", () => {
 
         const records = creditCardReportSheet.rows;
         expect(records.length).toBe(creditCardReportSampleRows.length);
-        // 10番目のレコードが更新されているか確認
+        // 11番目のレコードが更新されているか確認
         expect(records[10]).toEqual([
             id,
             creditCardReportSampleRows[10][1],
@@ -141,7 +141,7 @@ describe("CreditCardReportSheet", () => {
 
         const records = creditCardReportSheet.rows;
         expect(records.length).toBe(creditCardReportSampleRows.length);
-        // 10番目のレコードが更新されているか確認
+        // 11番目のレコードが更新されているか確認
         expect(records[10]).toEqual([
             id,
             creditCardReportSampleRows[10][1],

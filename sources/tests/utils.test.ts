@@ -82,6 +82,15 @@ describe("CommonUtils", () => {
 
             expect(result).toEqual(expected);
         });
+
+        it("文字列に「返品」が含まれている場合は負数にする", () => {
+            const yenStr = "-10,000円（返品）";
+            const expected = -10000;
+
+            const result = CommonUtils.convertYenStrToNum(yenStr);
+
+            expect(result).toEqual(expected);
+        });
     });
 
     describe("formatNumberWithCommas", () => {
