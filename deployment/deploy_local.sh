@@ -13,7 +13,7 @@ source .env
 
 CLASPJSON=$(cat <<-END
     {
-        "scriptId": "$STAGING_SCRIPT_ID",
+        "scriptId": "$TARGET_SCRIPT_ID",
         "rootDir": "public"
     }
 END
@@ -21,4 +21,4 @@ END
 echo $CLASPJSON > .clasp.json
 
 clasp push --force
-clasp deploy --deploymentId $STAGING_DEPLOYMENT_ID -d Develop
+clasp deploy --deploymentId $TARGET_DEPLOYMENT_ID -d Develop
