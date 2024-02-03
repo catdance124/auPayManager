@@ -17,6 +17,10 @@
 
 -   [GAS で本格的に開発するために考えたこと](https://zenn.dev/catdance124/books/au-pay-manager-development)
 
+## ドキュメント
+
+-   [typeDoc](https://catdance124.github.io/auPayManager/typedoc/)
+
 ## ローカルから指定環境へ手動デプロイ
 
 ```sh
@@ -38,7 +42,3 @@ Pushed 2 files.
 Created version 600.
 - ************ @600.
 ```
-
-# ドキュメント
-
--   [typeDoc](https://catdance124.github.io/auPayManager/typedoc/)
