@@ -41,6 +41,4 @@ Created version 600.
 
 # ドキュメント
 
-## typeDoc
-
--   Documentation / [Exports](./docs/typedoc/README.md)
+-   [typeDoc](https://catdance124.github.io/auPayManager/typedoc/)
