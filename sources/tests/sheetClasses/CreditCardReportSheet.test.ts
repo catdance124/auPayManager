@@ -24,6 +24,46 @@ describe("CreditCardReportSheet", () => {
         creditCardReportSheet.rows = [...creditCardReportSampleRows];
     });
 
+    it("利用速報レポートをinsertする", () => {
+        // 3番目に古い利用日時のレコードを挿入する
+        const date = CommonUtils.parseDate(
+            "2023/12/10 15:46",
+            "yyyy/M/d HH:mm"
+        );
+        const creditCardUsageBasicReport = {
+            date: date,
+            content: "test content",
+            amount: 1000,
+        };
+
+        const creditCardImportantDate = CreditCardUtils.calculateImportantDate(
+            creditCardUsageBasicReport.date
+        );
+        const id = "A" + CommonUtils.createId();
+
+        creditCardReportSheet.insert({
+            id: expect.stringMatching(/^A.+/),
+            paymentDate: creditCardImportantDate.paymentDate,
+            date: creditCardUsageBasicReport.date,
+            content: creditCardUsageBasicReport.content,
+            amount: creditCardUsageBasicReport.amount,
+            paymentLabel: config.paymentLabel.default,
+        });
+
+        const records = creditCardReportSheet.rows;
+        expect(records.length).toBe(creditCardReportSampleRows.length + 1);
+        // 3番目に位置しているか確認
+        expect(records[2]).toEqual([
+            expect.stringMatching(/^A.+/),
+            creditCardImportantDate.paymentDate,
+            creditCardUsageBasicReport.date,
+            creditCardUsageBasicReport.content,
+            creditCardUsageBasicReport.amount,
+            config.paymentLabel.default,
+            undefined,
+        ]);
+    });
+
     it("利用詳細レポートをinsertする", () => {
         // 3番目に古い利用日時のレコードを挿入する
         const date = CommonUtils.parseDate(
@@ -44,7 +84,7 @@ describe("CreditCardReportSheet", () => {
         expect(records.length).toBe(creditCardReportSampleRows.length + 1);
         // 3番目に位置しているか確認
         expect(records[2]).toEqual([
-            expect.any(String),
+            expect.stringMatching(/^X.+/),
             CreditCardUtils.calculateImportantDate(date).paymentDate,
             creditCardDetailBasicReport.date,
             creditCardDetailBasicReport.content,
@@ -54,7 +94,7 @@ describe("CreditCardReportSheet", () => {
         ]);
         // 追加されたレコードが返却されているか確認
         expect(upsertedRecord).toEqual({
-            id: expect.any(String),
+            id: expect.stringMatching(/^X.+/),
             paymentDate:
                 CreditCardUtils.calculateImportantDate(date).paymentDate,
             date: creditCardDetailBasicReport.date,
