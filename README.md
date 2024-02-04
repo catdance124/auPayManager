@@ -2,26 +2,26 @@
 
 生活費を `auPayクレジットカード` / `auPay` で決済するにあたって、Google スプレッドシートに利用履歴を記録し、逐次 LINE で通知するツール。
 
----
+<img src="/docs/assets/overview.png" width="700">
 
-# 本システムについて
+## 本システムについて
 
--   [auPAY カード/auPAY の決済情報を Google スプレッドシートに記録し、LINE に通知するツールを作成しました【GAS】](https://zenn.dev/catdance124/articles/au-pay-manager-introduction)
+-   紹介記事
 
-# 使い方
+    -   [auPAY カード/auPAY の決済情報を Google スプレッドシートに記録し、LINE に通知するツールを作成しました【GAS】](https://zenn.dev/catdance124/articles/au-pay-manager-introduction)
 
--   [ユーザーマニュアル](https://zenn.dev/catdance124/books/au-pay-manager-development/viewer/user_manual)
--   [利用のためのセットアップ](https://zenn.dev/catdance124/articles/au-pay-manager-introduction#%E5%88%A9%E7%94%A8%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
+-   使い方
+    -   [利用のためのセットアップ](https://zenn.dev/catdance124/articles/au-pay-manager-introduction#%E5%88%A9%E7%94%A8%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
+    -   [ユーザーマニュアル](https://zenn.dev/catdance124/books/au-pay-manager-development/viewer/user_manual)
 
-# 開発者向け
+## 開発者向け
 
--   [GAS で本格的に開発するために考えたこと](https://zenn.dev/catdance124/books/au-pay-manager-development)
+-   解説記事
+    -   [GAS で本格的に開発するために考えたこと](https://zenn.dev/catdance124/books/au-pay-manager-development)
+-   ドキュメント
+    -   [typeDoc](https://catdance124.github.io/auPayManager/typedoc/)
 
-## ドキュメント
-
--   [typeDoc](https://catdance124.github.io/auPayManager/typedoc/)
-
-## ローカルから指定環境へ手動デプロイ
+### ローカルから指定環境へ手動デプロイ
 
 ```sh
 $ pwd
