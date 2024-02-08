@@ -58,9 +58,14 @@ jobs:
 
             - name: vars -> .env
               run: |
-                  for var in $(printenv | cut -d "=" -f1); do
-                      echo "$var=\"${!var}\"" >> ".env"
-                  done
+                  touch .env
+                  echo ACCESS_TOKEN=$ACCESS_TOKEN >> .env
+                  echo ID_TOKEN=$ID_TOKEN >> .env
+                  echo REFRESH_TOKEN=$REFRESH_TOKEN >> .env
+                  echo CLIENT_ID=$CLIENT_ID >> .env
+                  echo CLIENT_SECRET=$CLIENT_SECRET >> .env
+                  echo SCRIPT_ID=$SCRIPT_ID >> .env
+                  echo DEPLOYMENT_ID=$DEPLOYMENT_ID >> .env
 
             - name: DEPLOY
               run: |
