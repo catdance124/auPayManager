@@ -35,6 +35,16 @@ jobs:
         needs: test
         runs-on: ubuntu-latest
 
+        env:
+            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+            ID_TOKEN: ${{ secrets.ID_TOKEN }}
+            REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+            CLIENT_ID: ${{ secrets.CLIENT_ID }}
+            CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+            SCRIPT_ID: ${{ secrets.STAGING_SCRIPT_ID }}
+            DEPLOYMENT_ID: ${{ secrets.STAGING_DEPLOYMENT_ID }}
+            ENV_NAME: "Staging"
+
         steps:
             - name: Setup repository
               uses: actions/checkout@v3
@@ -49,14 +59,9 @@ jobs:
 
             - name: vars -> .env
               run: |
-                  touch .env
-                  echo ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }} >> .env
-                  echo ID_TOKEN=${{ secrets.ID_TOKEN }} >> .env
-                  echo REFRESH_TOKEN=${{ secrets.REFRESH_TOKEN }} >> .env
-                  echo CLIENT_ID=${{ secrets.CLIENT_ID }} >> .env
-                  echo CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} >> .env
-                  echo SCRIPT_ID=${{ secrets.STAGING_SCRIPT_ID }} >> .env
-                  echo DEPLOYMENT_ID=${{ secrets.STAGING_DEPLOYMENT_ID }} >> .env
+                  for var in $(printenv | cut -d "=" -f1); do
+                      echo "$var=\"${!var}\"" >> ".env"
+                  done
 
             - name: DEPLOY
               run: |
