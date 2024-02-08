@@ -1,6 +1,11 @@
 {
   "name": "au-pay-manager",
   "author": "catdance124",
+  "scripts": {
+    "test": "jest",
+    "predeploy": "ts-node -T build.ts && bash deployment/generate_claspjson.sh && bash deployment/generate_clasprc.sh",
+    "deploy": "bash -c 'source .env && clasp push --force && clasp deploy  --deploymentId $DEPLOYMENT_ID -d $ENV'"
+  },
   "devDependencies": {
     "@google/clasp": "^2.4.2",
     "@types/google-apps-script": "^1.0.78",
