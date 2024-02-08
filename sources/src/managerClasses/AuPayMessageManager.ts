@@ -134,36 +134,22 @@ export class AuPayMessageManager {
         }
 
         // クイックリプライを押されたときに支払いラベル更新
-        if (parsedPostbackData.method == "updatePaymentLabel") {
-            // メモ可能な支払い元の場合
-            if (parsedPostbackData.label == this._config.paymentLabel.notable) {
-                const messages = [
-                    {
-                        type: "text",
-                        text: `
-                        updatePaymentLabel
-                        ${parsedPostbackData.id}
-                        
-                        ＜ここを書き換えてメモを送信してね＞`.replace(
-                            /^\s+/gm,
-                            ""
-                        ),
-                    },
-                ];
-                this._lineManager.sendReplyMessage(event, messages);
-            } else {
-                // メモを空白に更新
-                this._creditCardReportSheet.updatePaymentNote(
-                    parsedPostbackData.id,
-                    ""
-                );
-                // ラベル更新して返信
-                this._replyResultOfUpdatePaymentLabel(
-                    event,
-                    parsedPostbackData.id,
-                    parsedPostbackData.label
-                );
-            }
+        // メモ可能な支払い元の場合は除く
+        if (
+            parsedPostbackData.method == "updatePaymentLabel" &&
+            parsedPostbackData.label != this._config.paymentLabel.notable
+        ) {
+            // メモを空白に更新
+            this._creditCardReportSheet.updatePaymentNote(
+                parsedPostbackData.id,
+                ""
+            );
+            // ラベル更新して返信
+            this._replyResultOfUpdatePaymentLabel(
+                event,
+                parsedPostbackData.id,
+                parsedPostbackData.label
+            );
         }
     }
 
@@ -200,16 +186,29 @@ export class AuPayMessageManager {
                 },
             },
         ];
+        // メモ可能な支払い元の場合の追加アクション
+        const updatePaymentLabelAction = {
+            inputOption: "openKeyboard",
+            fillInText: `
+                updatePaymentLabel
+                ${id}
+                ＜ここを書き換えてメモを送信してね＞`.replace(/^\s+/gm, ""),
+        };
+        // クイックリプライに支払いラベルを追加
         for (let label of this._config.paymentLabelList) {
-            Array.prototype.push.apply(messages[0].quickReply.items, [
-                {
-                    type: "action",
-                    action: {
-                        type: "postback",
-                        label: label,
-                        data: `method=updatePaymentLabel&id=${id}&label=${label}`,
-                    },
+            const quickReplyItem = {
+                type: "action",
+                action: {
+                    type: "postback",
+                    label: label,
+                    data: `method=updatePaymentLabel&id=${id}&label=${label}`,
+                    // メモ可能な支払い元の場合はテキストをセットしキーボードを開く
+                    ...(label == this._config.paymentLabel.notable &&
+                        updatePaymentLabelAction),
                 },
+            };
+            Array.prototype.push.apply(messages[0].quickReply.items, [
+                quickReplyItem,
             ]);
         }
         this._lineManager.sendReplyMessage(event, messages);
