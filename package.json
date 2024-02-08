@@ -5,7 +5,7 @@
     "test": "jest",
     "prepush": "ts-node -T build.ts && bash deployment/generate_claspjson.sh && bash deployment/generate_clasprc.sh",
     "push": "clasp push --force",
-    "deploy": "bash -c 'npm run push && source .env && clasp deploy --deploymentId $DEPLOYMENT_ID -d $ENV'"
+    "deploy": "bash -c 'npm run push && source .env && npx clasp deploy --deploymentId $DEPLOYMENT_ID -d $ENV'"
   },
   "devDependencies": {
     "@google/clasp": "^2.4.2",
