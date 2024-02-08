@@ -29,7 +29,7 @@ jobs:
 
             - name: Test using jest
               run: |
-                  npx jest --coverage
+                  npm run test
 
     docs:
         needs: test
@@ -90,21 +90,15 @@ jobs:
             - name: Install node_modules
               run: npm ci
 
-            - name: Transpile ts -> js
-              run: npx ts-node -T build.ts
+            - name: vars -> .env
+              run: |
+                  for var in $(printenv | cut -d "=" -f1); do
+                      echo "$var=\"${!var}\"" >> ".env"
+                  done
 
-            - name: Generate ~/.clasprc.json
-              run: |
-                  bash deployment/generate_clasprc.sh
-            - name: Generate ~/.clasp.json
-              run: |
-                  bash deployment/generate_claspjson.sh
-            - name: Push
-              run: |
-                  npx clasp push --force
             - name: DEPLOY
               run: |
-                  npx clasp deploy --deploymentId $DEPLOYMENT_ID -d Production
+                  npm run deploy
 
     publish:
         needs: test
@@ -130,15 +124,12 @@ jobs:
             - name: Install node_modules
               run: npm ci
 
-            - name: Transpile ts -> js
-              run: npx ts-node -T build.ts
+            - name: vars -> .env
+              run: |
+                  for var in $(printenv | cut -d "=" -f1); do
+                      echo "$var=\"${!var}\"" >> ".env"
+                  done
 
-            - name: Generate ~/.clasprc.json
+            - name: DEPLOY
               run: |
-                  bash deployment/generate_clasprc.sh
-            - name: Generate ~/.clasp.json
-              run: |
-                  bash deployment/generate_claspjson.sh
-            - name: Push
-              run: |
-                  npx clasp push --force
+                  npm run push
