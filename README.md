@@ -49,7 +49,7 @@ $ vi .env
 $ cat .env
 DEPLOYMENT_ID=******************
 SCRIPT_ID=******************
-ENV=Develop
+ENV_NAME=Develop
 
 # ビルド&デプロイ
 $ npm run deploy

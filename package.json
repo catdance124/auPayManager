@@ -3,9 +3,11 @@
   "author": "catdance124",
   "scripts": {
     "test": "jest",
-    "prepush": "ts-node -T build.ts && bash deployment/generate_claspjson.sh && bash deployment/generate_clasprc.sh",
+    "build": "ts-node -T build.ts",
+    "prepush": "npm run build && bash deployment/generate_claspjson.sh && bash deployment/generate_clasprc.sh",
     "push": "clasp push --force",
-    "deploy": "bash -c 'npm run push && source .env && npx clasp deploy --deploymentId $DEPLOYMENT_ID -d $ENV_NAME'"
+    "predeploy": "npm run push",
+    "deploy": "bash -c 'source .env && npx clasp deploy --deploymentId $DEPLOYMENT_ID -d $ENV_NAME'"
   },
   "devDependencies": {
     "@google/clasp": "^2.4.2",
