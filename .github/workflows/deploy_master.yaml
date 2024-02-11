@@ -19,17 +19,12 @@ jobs:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
-            - name: Install node_modules
-              run: npm ci
-
-            - name: Test using jest
+            - name: Test
               run: |
-                  npx jest --coverage
+                  npm run test
 
     docs:
         needs: test
@@ -41,15 +36,11 @@ jobs:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
-            - name: Install typedoc, typedoc-plugin-markdown
-              run: npm install -g typedoc typedoc-plugin-markdown
-            - name: Install @types/google-apps-script
-              run: npm install --save-dev @types/google-apps-script
+            - name: Install modules
+              run: npm install -g typedoc typedoc-plugin-markdown @types/google-apps-script
 
             - name: Generate Docs
               run: typedoc --entryPoints ${src_dir} --entryPointStrategy expand --out ${dst_dir} --cleanOutputDir --plugin typedoc-plugin-markdown --disableSources --readme none
@@ -77,34 +68,18 @@ jobs:
             CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
             SCRIPT_ID: ${{ secrets.MASTER_SCRIPT_ID }}
             DEPLOYMENT_ID: ${{ secrets.MASTER_DEPLOYMENT_ID }}
+            ENV_NAME: "Production"
 
         steps:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
-            - name: Install node_modules
-              run: npm ci
-
-            - name: Transpile ts -> js
-              run: npx ts-node -T build.ts
-
-            - name: Generate ~/.clasprc.json
-              run: |
-                  bash deployment/generate_clasprc.sh
-            - name: Generate ~/.clasp.json
-              run: |
-                  bash deployment/generate_claspjson.sh
-            - name: Push
-              run: |
-                  npx clasp push --force
             - name: DEPLOY
               run: |
-                  npx clasp deploy --deploymentId $DEPLOYMENT_ID -d Production
+                  npm run deploy
 
     publish:
         needs: test
@@ -122,23 +97,9 @@ jobs:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
-            - name: Install node_modules
-              run: npm ci
-
-            - name: Transpile ts -> js
-              run: npx ts-node -T build.ts
-
-            - name: Generate ~/.clasprc.json
+            - name: PUSH
               run: |
-                  bash deployment/generate_clasprc.sh
-            - name: Generate ~/.clasp.json
-              run: |
-                  bash deployment/generate_claspjson.sh
-            - name: Push
-              run: |
-                  npx clasp push --force
+                  npm run push

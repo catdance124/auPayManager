@@ -19,17 +19,12 @@ jobs:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
-            - name: Install node_modules
-              run: npm ci
-
-            - name: Test using jest
+            - name: Test
               run: |
-                  npx jest --coverage
+                  npm run test
 
     deploy:
         needs: test
@@ -43,31 +38,15 @@ jobs:
             CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
             SCRIPT_ID: ${{ secrets.STAGING_SCRIPT_ID }}
             DEPLOYMENT_ID: ${{ secrets.STAGING_DEPLOYMENT_ID }}
+            ENV_NAME: "Staging"
 
         steps:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
-            - name: Install node_modules
-              run: npm ci
-
-            - name: Transpile ts -> js
-              run: npx ts-node -T build.ts
-
-            - name: Generate ~/.clasprc.json
-              run: |
-                  bash deployment/generate_clasprc.sh
-            - name: Generate ~/.clasp.json
-              run: |
-                  bash deployment/generate_claspjson.sh
-            - name: Push
-              run: |
-                  npx clasp push --force
             - name: DEPLOY
               run: |
-                  npx clasp deploy --deploymentId $DEPLOYMENT_ID -d Staging
+                  npm run deploy

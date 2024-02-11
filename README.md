@@ -23,19 +23,36 @@
 
 ### ローカルから指定環境へ手動デプロイ
 
+インストール&テスト
+
 ```sh
+$ git clone git@github.com:catdance124/auPayManager.git ~/auPayManager
+
 $ pwd
 ~/auPayManager
 
+# 依存パッケージをインストール
 $ npm install
 
+# テストを実行
+$ npm run test
+```
+
+デプロイ
+
+```sh
+# デプロイするアカウントでログイン（~/.clasprc.json を作成）
+$ clasp login
+
+# デプロイ用の環境変数を準備
 $ vi .env
 $ cat .env
-TARGET_DEPLOYMENT_ID=******************
-TARGET_SCRIPT_ID=******************
+DEPLOYMENT_ID=******************
+SCRIPT_ID=******************
+ENV_NAME=Develop
 
-$ ./deployment/deploy_local.sh
-~/auPayManager
+# ビルド&デプロイ
+$ npm run deploy
 └─ public/appsscript.json
 └─ public/main.js
 Pushed 2 files.
