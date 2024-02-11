@@ -19,15 +19,10 @@ jobs:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
-            - name: Install node_modules
-              run: npm ci
-
-            - name: Test using jest
+            - name: Test
               run: |
                   npm run test
 
@@ -49,19 +44,8 @@ jobs:
             - name: Setup repository
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20.x"
-
-            - name: Install node_modules
-              run: npm ci
-
-            - name: vars -> .env
-              run: |
-                  for var in $(printenv | cut -d "=" -f1); do
-                      echo "$var=\"${!var}\"" >> ".env"
-                  done
+            - name: Initialize
+              uses: ./.github/actions/initialize
 
             - name: DEPLOY
               run: |
