@@ -62,7 +62,7 @@ export class LineManager {
                     this._logDebugSheet.log("error", parsedRes);
                 }
             }
-            this._logDebugSheet.log("message post", messages);
+            this._logDebugSheet.log("push message", messages);
         } catch (e: any) {
             this._logDebugSheet.log("error", e.message);
         }
@@ -151,7 +151,7 @@ export class LineManager {
             if (parsedRes.message) {
                 this._logDebugSheet.log("error", parsedRes);
             }
-            this._logDebugSheet.log("message post", messages);
+            this._logDebugSheet.log("reply message", messages);
         } catch (e: any) {
             this._logDebugSheet.log("error", e.message);
         }
