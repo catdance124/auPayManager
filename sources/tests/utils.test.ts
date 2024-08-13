@@ -5,6 +5,27 @@ describe("CreditCardUtils", () => {
     describe("calculateImportantDate", () => {
         it("支払い月が翌月の場合、支払日と締め日を正しく計算すること。", () => {
             const usageDate = CommonUtils.parseDate(
+                "2022/01/01 00:30:00",
+                "yyyy/MM/dd HH:mm:ss"
+            );
+            const expected = {
+                paymentDate: CommonUtils.parseDate(
+                    "2022/02/10 00:00:00",
+                    "yyyy/MM/dd HH:mm:ss"
+                ),
+                closingDate: CommonUtils.parseDate(
+                    "2022/01/15 00:00:00",
+                    "yyyy/MM/dd HH:mm:ss"
+                ),
+            };
+
+            const result = CreditCardUtils.calculateImportantDate(usageDate);
+
+            expect(result).toEqual(expected);
+        });
+
+        it("支払い月が翌月の場合、支払日と締め日を正しく計算すること。", () => {
+            const usageDate = CommonUtils.parseDate(
                 "2022/01/15 23:30:00",
                 "yyyy/MM/dd HH:mm:ss"
             );
@@ -36,6 +57,28 @@ describe("CreditCardUtils", () => {
                 ),
                 closingDate: CommonUtils.parseDate(
                     "2022/02/15 00:00:00",
+                    "yyyy/MM/dd HH:mm:ss"
+                ),
+            };
+
+            // 内部ではgetDate(JST)で計算しているので、日付は合う
+            const result = CreditCardUtils.calculateImportantDate(usageDate);
+
+            expect(result).toEqual(expected);
+        });
+
+        it("支払い月が翌々月の場合、支払日と締め日を正しく計算すること。", () => {
+            const usageDate = CommonUtils.parseDate(
+                "2022/07/31 00:30:00",
+                "yyyy/MM/dd HH:mm:ss"
+            );
+            const expected = {
+                paymentDate: CommonUtils.parseDate(
+                    "2022/09/10 00:00:00",
+                    "yyyy/MM/dd HH:mm:ss"
+                ),
+                closingDate: CommonUtils.parseDate(
+                    "2022/08/15 00:00:00",
                     "yyyy/MM/dd HH:mm:ss"
                 ),
             };
