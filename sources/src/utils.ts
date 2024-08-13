@@ -16,16 +16,19 @@ export namespace CreditCardUtils {
         paymentDate: Date;
         closingDate: Date;
     } {
+        const usageYear = usageDate.getFullYear();
         const usageMonth = usageDate.getMonth();
         const usageDay = usageDate.getDate();
 
         // 支払日と締め日を設定する
         const config = new Config();
-        let paymentDate = new Date(usageDate);
-        let closingDate = new Date(usageDate);
+        const paymentDate = new Date(usageYear, 1, 1);
+        const closingDate = new Date(usageYear, 1, 1);
+
         // 月を設定
         if (usageDay <= config.creditCardClosingDay) {
             paymentDate.setMonth(usageMonth + 1);
+            closingDate.setMonth(usageMonth);
         } else {
             paymentDate.setMonth(usageMonth + 2);
             closingDate.setMonth(usageMonth + 1);
