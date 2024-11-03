@@ -1,4 +1,4 @@
-import { gmailMailMap } from "../interfaces";
+import { flexMessage, gmailMailMap } from "../interfaces";
 import { CreditCardPaymentMail } from "../mailClasses/CreditCardPaymentMail";
 import { CreditCardUsageDetailMail } from "../mailClasses/CreditCardUsageDetailMail";
 import { CreditCardUsageMail } from "../mailClasses/CreditCardUsageMail";
@@ -56,7 +56,7 @@ export class AuPayMailManager {
      */
     private _mailObjects: {
         mail: Mail;
-        createFlexMessage: (arg: any) => any;
+        createFlexMessage: (arg: any) => flexMessage[];
     }[];
 
     /**
@@ -161,7 +161,7 @@ export class AuPayMailManager {
         const subject = mail.getSubject();
         this._logDebugSheet.log("mail receive", subject);
 
-        let lineMessages;
+        let lineMessages: flexMessage[] = [];
 
         // 各メールオブジェクトで処理とメッセージ作成
         for (let mailObject of this._mailObjects) {

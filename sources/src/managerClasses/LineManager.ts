@@ -1,3 +1,4 @@
+import { lineMessage } from "../interfaces";
 import { LogDebugSheet } from "../sheetClasses/LogDebugSheet";
 import { CommonUtils } from "../utils";
 
@@ -41,7 +42,7 @@ export class LineManager {
      * @param roomId - 送信先のルームID
      * @param messages - 送信するメッセージの配列
      */
-    private _sendPushMessage(roomId: string | null, messages: any[]) {
+    private _sendPushMessage(roomId: string | null, messages: lineMessage[]) {
         try {
             const URL = "https://api.line.me/v2/bot/message/push";
             if (this._lineNotify) {
@@ -103,7 +104,7 @@ export class LineManager {
      * 登録グループにpush通知を送信
      * @param messages - 送信するメッセージの配列
      */
-    sendPushMessageToGroup(messages: any[]) {
+    sendPushMessageToGroup(messages: lineMessage[]) {
         this._sendPushMessage(this._lineGroupId, messages);
     }
 
@@ -124,7 +125,7 @@ export class LineManager {
                 roomId: string;
             };
         },
-        messages: any[],
+        messages: lineMessage[],
         needsRoomIdCheck: boolean = true
     ) {
         if (needsRoomIdCheck) {

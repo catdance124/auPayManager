@@ -137,6 +137,28 @@ export interface flexMessageBubble {
     body: flexMessageBox;
     styles: any;
 }
+export interface flexMessage extends lineMessage {
+    type: string;
+    altText: string;
+    contents: flexMessageBubble;
+}
+export interface replyMessage extends lineMessage {
+    type: string;
+    text: string;
+    emojis?: {
+        index: string;
+        productId: string;
+        emojiId: string;
+    }[];
+}
+export interface quickReplyMessage extends replyMessage {
+    quickReply: {
+        items: any[];
+    }
+}
+export interface lineMessage {
+    [key: string]: any;
+}
 
 /*
     変数などのinterface
