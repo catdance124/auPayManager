@@ -1,4 +1,4 @@
-import { queryString } from "./interfaces";
+import { flexMessageBox, flexMessageBubble, flexMessageContent, flexMessageSeparator, flexMessageText, queryString } from "./interfaces";
 import { Config } from "./config";
 import { parse } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
@@ -179,11 +179,11 @@ export namespace FlexMessageUtils {
      * @returns 生成されたBox要素
      */
     export function _getBox(
-        contents: any[],
+        contents: flexMessageContent[],
         layout: string = "vertical",
         margin: string = "none",
         spacing: string = "none"
-    ): any {
+    ): flexMessageBox {
         return {
             type: "box",
             layout: layout,
@@ -202,10 +202,10 @@ export namespace FlexMessageUtils {
      * @returns 生成されたBox要素
      */
     export function _getVerticalBox(
-        contents: any[],
+        contents: flexMessageContent[],
         margin: string = "none",
         spacing: string = "none"
-    ): any {
+    ): flexMessageBox {
         return _getBox(contents, "vertical", margin, spacing);
     }
 
@@ -218,10 +218,10 @@ export namespace FlexMessageUtils {
      * @returns 生成されたBox要素
      */
     export function _getHorizontalBox(
-        contents: any[],
+        contents: flexMessageContent[],
         margin: string = "none",
         spacing: string = "none"
-    ): any {
+    ): flexMessageBox {
         return _getBox(contents, "horizontal", margin, spacing);
     }
 
@@ -231,7 +231,7 @@ export namespace FlexMessageUtils {
      * @param contents - Bubble要素内のコンテンツ
      * @returns 生成されたBubble要素
      */
-    export function _getOutline(contents: any[]): any {
+    export function _getOutline(contents: flexMessageContent[]): flexMessageBubble {
         return {
             type: "bubble",
             body: _getVerticalBox(contents),
@@ -250,7 +250,7 @@ export namespace FlexMessageUtils {
      * @param [size="sm"] - テキストのサイズ（"xs"、"sm"、"md"、"lg"、"xl"）
      * @returns 生成されたテキスト要素
      */
-    export function _getLeftText(text: string, size: string = "sm"): any {
+    export function _getLeftText(text: string, size: string = "sm"): flexMessageText {
         return {
             type: "text",
             size: size,
@@ -267,7 +267,7 @@ export namespace FlexMessageUtils {
      * @param [size="sm"] - テキストのサイズ（"xs"、"sm"、"md"、"lg"、"xl"）
      * @returns 生成されたテキスト要素
      */
-    export function _getNormalText(text: string, size: string = "sm"): any {
+    export function _getNormalText(text: string, size: string = "sm"): flexMessageText {
         return {
             type: "text",
             size: size,
@@ -283,7 +283,7 @@ export namespace FlexMessageUtils {
      * @param [size="sm"] - テキストのサイズ（"xs"、"sm"、"md"、"lg"、"xl"）
      * @returns 生成されたテキスト要素
      */
-    export function _getRightText(text: string, size: string = "sm"): any {
+    export function _getRightText(text: string, size: string = "sm"): flexMessageText {
         return {
             type: "text",
             size: size,
@@ -299,7 +299,7 @@ export namespace FlexMessageUtils {
      * @param [margin="sm"] - セパレータのマージン（"none"、"xs"、"sm"、"md"、"lg"、"xl"）
      * @returns 生成されたセパレータ要素
      */
-    export function _getSeparator(margin: string = "sm"): any {
+    export function _getSeparator(margin: string = "sm"): flexMessageSeparator {
         return {
             type: "separator",
             margin: margin,

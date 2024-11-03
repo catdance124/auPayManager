@@ -110,6 +110,33 @@ export interface flexMessageTemplateData {
     amountLabel2: string;
     amount2: string;
 }
+export interface flexMessageText {
+    type: string;
+    size: string;
+    color: string;
+    text: string;
+    flex?: number;
+    align?: string;
+}
+export interface flexMessageSeparator {
+    type: string;
+    margin: string;
+}
+export interface flexMessageContent {
+    [key: string]: any;
+}
+export interface flexMessageBox {
+    type: string;
+    layout: string;
+    margin: string;
+    spacing: string;
+    contents: flexMessageContent[];
+}
+export interface flexMessageBubble {
+    type: string;
+    body: flexMessageBox;
+    styles: any;
+}
 
 /*
     変数などのinterface
