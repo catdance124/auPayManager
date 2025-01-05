@@ -134,12 +134,30 @@ describe("CommonUtils", () => {
 
             expect(result).toEqual(expected);
         });
+
+        it("文字列に「-」が含まれている場合は負数にする", () => {
+            const yenStr = "-10,000円";
+            const expected = -10000;
+
+            const result = CommonUtils.convertYenStrToNum(yenStr);
+
+            expect(result).toEqual(expected);
+        });
     });
 
     describe("formatNumberWithCommas", () => {
         it("数値を「〇〇円」形式の文字列に変換する", () => {
             const number = 10000;
             const expected = "10,000円";
+
+            const result = CommonUtils.formatNumberWithCommas(number);
+
+            expect(result).toEqual(expected);
+        });
+
+        it("負数の数値を「〇〇円」形式の文字列に変換する", () => {
+            const number = -10000;
+            const expected = "-10,000円";
 
             const result = CommonUtils.formatNumberWithCommas(number);
 
