@@ -50,7 +50,7 @@ jobs:
                   git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
                   git config --global user.name "${GITHUB_ACTOR}"
                   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-                  if (git diff --shortstat --relative=${dst_dir} | grep '[0-9]'); then \
+                  if [ -n "$(git status -s ${dst_dir})" ]; then \
                     git add ${dst_dir}; \
                     git commit -m "GitHub Actions から差分を Push"; \
                     git push origin HEAD:${GITHUB_REF}; \
