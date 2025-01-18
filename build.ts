@@ -1,4 +1,5 @@
 import { build } from "esbuild";
+import { execSync } from "child_process";
 import ts from "typescript";
 
 const ENTRY_POINT = "sources/src/main.ts";
@@ -53,6 +54,7 @@ function includesExportKeywordModifier(node: ts.Node) {
 }
 
 const globalName = "bundledApp";
+const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
 
 build({
     entryPoints: [ENTRY_POINT],
@@ -63,6 +65,9 @@ build({
     // 関数をglobalに露出させる
     banner: {
         js: `
+/**
+ * @source https://github.com/catdance124/auPayManager/tree/${commitHash}
+*/
 ${exportedFunctionNames
     .map((functionName) =>
         `
