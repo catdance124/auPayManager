@@ -1,3 +1,5 @@
+import { rows } from "../interfaces";
+
 /**
  * スプレッドシートアクセサクラス
  * @author catdance124
@@ -80,7 +82,7 @@ export class SheetAccessor {
      *  シートから値を読み込む
      * @returns 値
      */
-    readValuesFromSheet(): any[][] {
+    readValuesFromSheet(): rows {
         const recordNumber = this._getRecordNumber();
         if (0 < recordNumber) {
             return this._sheet
@@ -92,7 +94,7 @@ export class SheetAccessor {
                 )
                 .getValues();
         } else {
-            return [];
+            return [[]];
         }
     }
 
@@ -100,7 +102,7 @@ export class SheetAccessor {
      * シートに値を書き込む
      * @param values - 値
      */
-    writeValuesToSheet(values: any[][]): void {
+    writeValuesToSheet(values: rows): void {
         if (0 < values.length) {
             this._sheet
                 .getRange(

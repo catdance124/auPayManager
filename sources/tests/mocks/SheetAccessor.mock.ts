@@ -1,3 +1,5 @@
+import { rows } from "../../src/interfaces";
+
 export const SheetAccessorMock = (headers: string[], sheetName: string) => {
     return {
         _headers: headers,
@@ -10,7 +12,7 @@ export const SheetAccessorMock = (headers: string[], sheetName: string) => {
         readValuesFromSheet: jest.fn(function () {
             return this._rows.slice(1);
         }),
-        writeValuesToSheet: jest.fn(function (rows: any[][]) {
+        writeValuesToSheet: jest.fn(function (rows: rows) {
             this._rows = rows;
         }),
     };

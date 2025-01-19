@@ -93,6 +93,9 @@ export interface logDebugSheetRecord extends sheetRecord {
     label: string;
     value: string;
 }
+export type row = any[];
+export type rows = row[];
+
 
 /*
     FlexMessageなどのinterface
