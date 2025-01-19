@@ -66,13 +66,13 @@ catdance124
 
 #### Get Signature
 
-> **get** **rows**(): `any`[][]
+> **get** **rows**(): [`rows`](../../../interfaces/type-aliases/rows.md)
 
 データ配列を取得する
 
 ##### Returns
 
-`any`[][]
+[`rows`](../../../interfaces/type-aliases/rows.md)
 
 データ配列
 
@@ -86,7 +86,7 @@ catdance124
 
 ###### rows
 
-`any`[][]
+[`rows`](../../../interfaces/type-aliases/rows.md)
 
 データ配列
 
@@ -220,7 +220,7 @@ catdance124
 
 ### updatePaymentLabel()
 
-> **updatePaymentLabel**(`id`, `label`): `any`
+> **updatePaymentLabel**(`id`, `label`): [`row`](../../../interfaces/type-aliases/row.md)
 
 支払いラベルを更新する
 
@@ -240,7 +240,7 @@ catdance124
 
 #### Returns
 
-`any`
+[`row`](../../../interfaces/type-aliases/row.md)
 
 更新された行データ
 
@@ -248,7 +248,7 @@ catdance124
 
 ### updatePaymentNote()
 
-> **updatePaymentNote**(`id`, `note`): `any`
+> **updatePaymentNote**(`id`, `note`): [`row`](../../../interfaces/type-aliases/row.md)
 
 支払いメモを更新する
 
@@ -268,7 +268,7 @@ catdance124
 
 #### Returns
 
-`any`
+[`row`](../../../interfaces/type-aliases/row.md)
 
 更新された行データ
 

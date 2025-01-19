@@ -62,13 +62,13 @@ catdance124
 
 ### readValuesFromSheet()
 
-> **readValuesFromSheet**(): `any`[][]
+> **readValuesFromSheet**(): [`rows`](../../../interfaces/type-aliases/rows.md)
 
 シートから値を読み込む
 
 #### Returns
 
-`any`[][]
+[`rows`](../../../interfaces/type-aliases/rows.md)
 
 値
 
@@ -84,7 +84,7 @@ catdance124
 
 ##### values
 
-`any`[][]
+[`rows`](../../../interfaces/type-aliases/rows.md)
 
 値
 

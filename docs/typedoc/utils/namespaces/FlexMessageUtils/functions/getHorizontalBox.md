@@ -6,7 +6,7 @@
 
 # Function: \_getHorizontalBox()
 
-> **\_getHorizontalBox**(`contents`, `margin`?, `spacing`?): `any`
+> **\_getHorizontalBox**(`contents`, `margin`?, `spacing`?): [`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
 
 横方向のBox要素を生成する
 
@@ -14,7 +14,7 @@
 
 ### contents
 
-`any`[]
+[`flexMessageContent`](../../../../interfaces/interfaces/flexMessageContent.md)[]
 
 Box要素内のコンテンツ
 
@@ -32,6 +32,6 @@ Boxのスペーシング（"none"、"xs"、"sm"、"md"、"lg"、"xl"）
 
 ## Returns
 
-`any`
+[`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
 
 生成されたBox要素

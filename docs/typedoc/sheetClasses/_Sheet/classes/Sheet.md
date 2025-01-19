@@ -59,13 +59,13 @@ catdance124
 
 #### Get Signature
 
-> **get** **rows**(): `any`[][]
+> **get** **rows**(): [`rows`](../../../interfaces/type-aliases/rows.md)
 
 データ配列を取得する
 
 ##### Returns
 
-`any`[][]
+[`rows`](../../../interfaces/type-aliases/rows.md)
 
 データ配列
 
@@ -79,7 +79,7 @@ catdance124
 
 ###### rows
 
-`any`[][]
+[`rows`](../../../interfaces/type-aliases/rows.md)
 
 データ配列
 

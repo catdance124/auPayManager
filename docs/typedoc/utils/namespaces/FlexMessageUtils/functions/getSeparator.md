@@ -6,7 +6,7 @@
 
 # Function: \_getSeparator()
 
-> **\_getSeparator**(`margin`?): `any`
+> **\_getSeparator**(`margin`?): [`flexMessageSeparator`](../../../../interfaces/interfaces/flexMessageSeparator.md)
 
 セパレータ要素を生成する
 
@@ -20,6 +20,6 @@
 
 ## Returns
 
-`any`
+[`flexMessageSeparator`](../../../../interfaces/interfaces/flexMessageSeparator.md)
 
 生成されたセパレータ要素

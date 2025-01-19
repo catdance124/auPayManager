@@ -6,7 +6,7 @@
 
 # Function: \_getOutline()
 
-> **\_getOutline**(`contents`): `any`
+> **\_getOutline**(`contents`): [`flexMessageBubble`](../../../../interfaces/interfaces/flexMessageBubble.md)
 
 アウトライン付きのBubble要素を生成する
 
@@ -14,12 +14,12 @@
 
 ### contents
 
-`any`[]
+[`flexMessageContent`](../../../../interfaces/interfaces/flexMessageContent.md)[]
 
 Bubble要素内のコンテンツ
 
 ## Returns
 
-`any`
+[`flexMessageBubble`](../../../../interfaces/interfaces/flexMessageBubble.md)
 
 生成されたBubble要素

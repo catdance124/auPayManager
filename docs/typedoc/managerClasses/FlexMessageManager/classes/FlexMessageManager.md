@@ -26,7 +26,7 @@ catdance124
 
 ### createCreditCardUsageDetailFlexMessage()
 
-> **createCreditCardUsageDetailFlexMessage**(`creditCardDetailReports`): `object`[]
+> **createCreditCardUsageDetailFlexMessage**(`creditCardDetailReports`): [`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 クレジットカード詳細利用のFlex Messageを生成する
 
@@ -40,7 +40,7 @@ catdance124
 
 #### Returns
 
-`object`[]
+[`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 Flex Message
 
@@ -48,7 +48,7 @@ Flex Message
 
 ### createCreditCardUsageFlexMessage()
 
-> **createCreditCardUsageFlexMessage**(`creditCardUsageReport`, `paymentNote`?): `object`[]
+> **createCreditCardUsageFlexMessage**(`creditCardUsageReport`, `paymentNote`?): [`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 クレジットカード利用のFlex Messageを生成する
 
@@ -68,7 +68,7 @@ Flex Message
 
 #### Returns
 
-`object`[]
+[`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 Flex Message
 
@@ -76,7 +76,7 @@ Flex Message
 
 ### createPaymentSummaryFlexMessage()
 
-> **createPaymentSummaryFlexMessage**(`creditCardPaymentReport`): `object`[]
+> **createPaymentSummaryFlexMessage**(`creditCardPaymentReport`): [`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 支払い合計のFlex Messageを生成する
 
@@ -90,7 +90,7 @@ Flex Message
 
 #### Returns
 
-`object`[]
+[`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 Flex Message
 
@@ -98,7 +98,7 @@ Flex Message
 
 ### createQrPayChargeFlexMessage()
 
-> **createQrPayChargeFlexMessage**(`qrPayChargeReport`): `object`[]
+> **createQrPayChargeFlexMessage**(`qrPayChargeReport`): [`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 auPayチャージのFlex Messageを生成する
 
@@ -112,7 +112,7 @@ auPayチャージレポート
 
 #### Returns
 
-`object`[]
+[`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 Flex Message
 
@@ -120,7 +120,7 @@ Flex Message
 
 ### createQrPayUsageFlexMessage()
 
-> **createQrPayUsageFlexMessage**(`qrPayUsageReport`): `object`[]
+> **createQrPayUsageFlexMessage**(`qrPayUsageReport`): [`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 auPay利用のFlex Messageを生成する
 
@@ -134,6 +134,6 @@ auPay利用レポート
 
 #### Returns
 
-`object`[]
+[`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 Flex Message

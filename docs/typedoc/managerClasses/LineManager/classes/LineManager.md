@@ -88,7 +88,7 @@ catdance124
 
 ##### messages
 
-`any`[]
+[`lineMessage`](../../../interfaces/interfaces/lineMessage.md)[]
 
 送信するメッセージの配列
 
@@ -135,7 +135,7 @@ roomIdが渡されていて、グループIDと一致しない場合は何も行
 
 ##### messages
 
-`any`[]
+[`lineMessage`](../../../interfaces/interfaces/lineMessage.md)[]
 
 送信するメッセージの配列
 

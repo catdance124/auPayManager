@@ -6,7 +6,7 @@
 
 # Function: \_getRightText()
 
-> **\_getRightText**(`text`, `size`?): `any`
+> **\_getRightText**(`text`, `size`?): [`flexMessageText`](../../../../interfaces/interfaces/flexMessageText.md)
 
 右寄せのテキスト要素を生成する
 
@@ -26,6 +26,6 @@
 
 ## Returns
 
-`any`
+[`flexMessageText`](../../../../interfaces/interfaces/flexMessageText.md)
 
 生成されたテキスト要素
