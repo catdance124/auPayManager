@@ -1,4 +1,4 @@
-import { paymentNote, summedAmount } from "../interfaces";
+import { flexMessage, lineMessage, paymentNote, quickReplyMessage, replyMessage, summedAmount } from "../interfaces";
 import { CommonUtils, CreditCardUtils } from "../utils";
 import { LogDebugSheet } from "../sheetClasses/LogDebugSheet";
 import { CreditCardReportSheet } from "../sheetClasses/CreditCardReportSheet";
@@ -170,7 +170,7 @@ export class AuPayMessageManager {
         },
         id: string
     ) {
-        let messages = [
+        let messages : quickReplyMessage[] = [
             {
                 type: "text",
                 text: "$ 支払い元を選んでね",
@@ -238,7 +238,7 @@ export class AuPayMessageManager {
             id,
             label
         );
-        let messages = [];
+        let messages: lineMessage[] = [];
         if (updatedRowData) {
             const creditCardImportantDate =
                 CreditCardUtils.calculateImportantDate(
@@ -268,8 +268,9 @@ export class AuPayMessageManager {
                     updatedRowData[
                         this._creditCardReportSheet.paymentNoteColumn
                     ]
-                );
+                ) as flexMessage[];
         } else {
+            messages = [] as replyMessage[];
             messages.push({
                 type: "text",
                 text: "期限切れデータだよ",

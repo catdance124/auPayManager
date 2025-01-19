@@ -9,6 +9,8 @@ import {
     qrPayUsageReport,
     flexMessageTemplateData,
     paymentHeaderData,
+    flexMessageBubble,
+    flexMessage,
 } from "../interfaces";
 import { CommonUtils, FlexMessageUtils } from "../utils";
 
@@ -17,7 +19,7 @@ import { CommonUtils, FlexMessageUtils } from "../utils";
  * @author catdance124
  */
 export class FlexMessageManager {
-    constructor() {}
+    constructor() { }
 
     /**
      * 共通のFlex Messageテンプレートを生成する
@@ -26,7 +28,7 @@ export class FlexMessageManager {
      */
     private _getCommonFlexMessageTemplate(
         flexMessageTemplateData: flexMessageTemplateData
-    ) {
+    ): flexMessageBubble {
         return FlexMessageUtils._getOutline([
             this._getPaymentHeaderInfo(
                 flexMessageTemplateData.paymentHeaderData
@@ -105,8 +107,8 @@ export class FlexMessageManager {
     createCreditCardUsageDetailFlexMessage(
         creditCardDetailReports: (creditCardDetailBasicReport &
             creditCardDetailExReport)[]
-    ) {
-        let messages = [];
+    ): flexMessage[] {
+        let messages: flexMessage[] = [];
         for (let creditCardDetailReport of creditCardDetailReports) {
             // 新規追加レコード以外はskip
             if (!creditCardDetailReport.id.match(/^X/)) {
@@ -130,7 +132,7 @@ export class FlexMessageManager {
         creditCardUsageReport: creditCardUsageBasicReport &
             creditCardUsageExReport,
         paymentNote?: string
-    ) {
+    ): flexMessage[] {
         let flexMessageContent = this._getCommonFlexMessageTemplate({
             paymentHeaderData: {
                 className: "auPayカード",
@@ -199,22 +201,22 @@ export class FlexMessageManager {
             },
         ]);
 
-        const messages = [
+        const messages: flexMessage[] = [
             {
                 type: "flex",
                 altText: `
                         💳auPayカード利用
                         💴利用金額: ${CommonUtils.formatNumberWithCommas(
-                            creditCardUsageReport.amount
-                        )}
+                    creditCardUsageReport.amount
+                )}
                         📊合計金額: ${CommonUtils.formatNumberWithCommas(
-                            creditCardUsageReport.summedAmount
-                        )}
+                    creditCardUsageReport.summedAmount
+                )}
                         (
                             ${CommonUtils.formatDate(
-                                creditCardUsageReport.closingDate,
-                                "M/d"
-                            )}〆
+                    creditCardUsageReport.closingDate,
+                    "M/d"
+                )}〆
                         )
                     `.replace(/^\s+/gm, ""),
                 contents: flexMessageContent,
@@ -232,7 +234,7 @@ export class FlexMessageManager {
     createPaymentSummaryFlexMessage(
         creditCardPaymentReport: creditCardPaymentBasicReport &
             creditCardPaymentExReport
-    ) {
+    ): flexMessage[] {
         let flexMessageContent = FlexMessageUtils._getOutline([
             this._getPaymentHeaderInfo({
                 className: "auPayカード",
@@ -309,14 +311,14 @@ export class FlexMessageManager {
             ]);
         }
 
-        const messages = [
+        const messages: flexMessage[] = [
             {
                 type: "flex",
                 altText: `
                         💳auPayカード利用状況
                         💴合計利用金額: ${CommonUtils.formatNumberWithCommas(
-                            creditCardPaymentReport.summedAmount.all
-                        )}
+                    creditCardPaymentReport.summedAmount.all
+                )}
                     `.replace(/^\s+/gm, ""),
                 contents: flexMessageContent,
             },
@@ -330,7 +332,7 @@ export class FlexMessageManager {
      * @param qrPayChargeReport - auPayチャージレポート
      * @returns Flex Message
      */
-    createQrPayChargeFlexMessage(qrPayChargeReport: qrPayChargeReport) {
+    createQrPayChargeFlexMessage(qrPayChargeReport: qrPayChargeReport): flexMessage[] {
         let flexMessageContent = this._getCommonFlexMessageTemplate({
             paymentHeaderData: {
                 className: "auPay",
@@ -351,17 +353,17 @@ export class FlexMessageManager {
             ),
         });
 
-        const messages = [
+        const messages: flexMessage[] = [
             {
                 type: "flex",
                 altText: `
                         📱auPayチャージ
                         💴チャージ金額: ${CommonUtils.formatNumberWithCommas(
-                            qrPayChargeReport.amount
-                        )}
+                    qrPayChargeReport.amount
+                )}
                         👛チャージ後残高: ${CommonUtils.formatNumberWithCommas(
-                            qrPayChargeReport.remainingAmount
-                        )}
+                    qrPayChargeReport.remainingAmount
+                )}
                     `.replace(/^\s+/gm, ""),
                 contents: flexMessageContent,
             },
@@ -375,7 +377,7 @@ export class FlexMessageManager {
      * @param qrPayUsageReport - auPay利用レポート
      * @returns Flex Message
      */
-    createQrPayUsageFlexMessage(qrPayUsageReport: qrPayUsageReport) {
+    createQrPayUsageFlexMessage(qrPayUsageReport: qrPayUsageReport): flexMessage[] {
         let flexMessageContent = this._getCommonFlexMessageTemplate({
             paymentHeaderData: {
                 className: "auPay",
@@ -414,22 +416,21 @@ export class FlexMessageManager {
             ]);
         }
 
-        const messages = [
+        const messages: flexMessage[] = [
             {
                 type: "flex",
                 altText: `
                         📱auPay利用
-                        ${
-                            qrPayUsageReport.chargeAlert
-                                ? "⚠️チャージしてください"
-                                : ""
-                        }
+                        ${qrPayUsageReport.chargeAlert
+                        ? "⚠️チャージしてください"
+                        : ""
+                    }
                         💴利用金額: ${CommonUtils.formatNumberWithCommas(
-                            qrPayUsageReport.amount
-                        )}
+                        qrPayUsageReport.amount
+                    )}
                         👛残高: ${CommonUtils.formatNumberWithCommas(
-                            qrPayUsageReport.remainingAmount
-                        )}
+                        qrPayUsageReport.remainingAmount
+                    )}
                     `.replace(/^\s+/gm, ""),
                 contents: flexMessageContent,
             },

@@ -5,6 +5,7 @@ import {
     summedAmount,
     creditCardReportSheetRecord,
     creditCardDetailBasicReport,
+    row,
 } from "../interfaces";
 import { Sheet } from "./_Sheet";
 import { CommonUtils, CreditCardUtils } from "../utils";
@@ -192,8 +193,8 @@ export class CreditCardReportSheet extends Sheet {
      * @param label - 支払いラベル
      * @returns 更新された行データ
      */
-    updatePaymentLabel(id: string, label: string): any {
-        let updatedRowData;
+    updatePaymentLabel(id: string, label: string): row {
+        let updatedRowData: row = [];
 
         let rows = this.rows;
         if (0 < rows.length) {
@@ -220,8 +221,8 @@ export class CreditCardReportSheet extends Sheet {
      * @param note - 支払いメモ
      * @returns 更新された行データ
      */
-    updatePaymentNote(id: string, note: string): any {
-        let updatedRowData;
+    updatePaymentNote(id: string, note: string): row {
+        let updatedRowData: row = [];
 
         let rows = this.rows;
         if (0 < rows.length) {

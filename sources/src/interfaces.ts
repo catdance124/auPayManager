@@ -93,6 +93,9 @@ export interface logDebugSheetRecord extends sheetRecord {
     label: string;
     value: string;
 }
+export type row = any[];
+export type rows = row[];
+
 
 /*
     FlexMessageなどのinterface
@@ -109,6 +112,55 @@ export interface flexMessageTemplateData {
     amount: string;
     amountLabel2: string;
     amount2: string;
+}
+export interface flexMessageText {
+    type: string;
+    size: string;
+    color: string;
+    text: string;
+    flex?: number;
+    align?: string;
+}
+export interface flexMessageSeparator {
+    type: string;
+    margin: string;
+}
+export interface flexMessageContent {
+    [key: string]: any;
+}
+export interface flexMessageBox {
+    type: string;
+    layout: string;
+    margin: string;
+    spacing: string;
+    contents: flexMessageContent[];
+}
+export interface flexMessageBubble {
+    type: string;
+    body: flexMessageBox;
+    styles: any;
+}
+export interface flexMessage extends lineMessage {
+    type: string;
+    altText: string;
+    contents: flexMessageBubble;
+}
+export interface replyMessage extends lineMessage {
+    type: string;
+    text: string;
+    emojis?: {
+        index: string;
+        productId: string;
+        emojiId: string;
+    }[];
+}
+export interface quickReplyMessage extends replyMessage {
+    quickReply: {
+        items: any[];
+    }
+}
+export interface lineMessage {
+    [key: string]: any;
 }
 
 /*

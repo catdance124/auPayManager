@@ -41,7 +41,7 @@ export class LogDebugSheet extends Sheet {
      * @param label - ラベル
      * @param value - 値
      */
-    log(label: string, value: any): void {
+    log(label: string, value: string | object): void {
         const date = new Date();
         if (typeof value === "string") {
             this.insert({ date: date, label: label, value: value });

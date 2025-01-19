@@ -1,4 +1,4 @@
-import { sheetRecord } from "../interfaces";
+import { rows, sheetRecord } from "../interfaces";
 import { SheetAccessor } from "./_SheetAccessor";
 
 /**
@@ -9,7 +9,7 @@ export class Sheet {
     /**
      * データ配列
      */
-    private _rows: any[][];
+    private _rows: rows;
     /**
      * スプレッドシートアクセサクラス
      */
@@ -23,7 +23,7 @@ export class Sheet {
      * データ配列を取得する
      * @returns データ配列
      */
-    get rows(): any[][] {
+    get rows(): rows {
         return this._rows;
     }
 
@@ -83,7 +83,7 @@ export class Sheet {
      * データ配列を設定する
      * @param rows - データ配列
      */
-    set rows(rows: any[][]) {
+    set rows(rows: rows) {
         this._rows = rows;
         this._sheetAccessor.writeValuesToSheet(rows);
     }
