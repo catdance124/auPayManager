@@ -56,7 +56,7 @@ export class AuPayMailManager {
      */
     private _mailObjects: {
         mail: Mail;
-        createFlexMessage: (arg: any) => flexMessage[];
+        createFlexMessage: (report: any) => flexMessage[];
     }[];
 
     /**

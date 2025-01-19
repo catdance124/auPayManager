@@ -64,8 +64,10 @@ export class LineManager {
                 }
             }
             this._logDebugSheet.log("push message", messages);
-        } catch (e: any) {
-            this._logDebugSheet.log("error", e.message);
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                this._logDebugSheet.log("error", e.message);
+            }
         }
     }
 
@@ -153,8 +155,10 @@ export class LineManager {
                 this._logDebugSheet.log("error", parsedRes);
             }
             this._logDebugSheet.log("reply message", messages);
-        } catch (e: any) {
-            this._logDebugSheet.log("error", e.message);
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                this._logDebugSheet.log("error", e.message);
+            }
         }
     }
 }
