@@ -74,7 +74,7 @@ export namespace CommonUtils {
 
     /**
      * 「〇〇円」形式の文字列を数値に変換する
-     * 文字列に「取消」または「返品」が含まれている場合は負数にする
+     * 文字列に特定のワードが含まれている場合は負数にする
      *
      * @param yenStr - 変換する「〇〇円」形式の文字列
      * @returns 変換された数値
@@ -84,9 +84,9 @@ export namespace CommonUtils {
         const res = yenStr.match(/(\d{1,3}(,\d{3})*)円/);
         if (res) {
             yenNum = Number(res[1].replace(/,/g, ""));
-            // 「取消」または「返品」が含まれている場合は負数にする
-            const cancelWords = ["取消", "返品"];
-            if (cancelWords.some((word) => yenStr.match(word))) {
+            // 特定のワードが含まれている場合は負数にする
+            const minusWords = ["取消", "返品", "-"];
+            if (minusWords.some((word) => yenStr.match(word))) {
                 yenNum *= -1;
             }
         }

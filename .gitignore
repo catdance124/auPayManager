@@ -2,3 +2,4 @@
 .clasp.json
 node_modules/
 public/main.js
+coverage/
