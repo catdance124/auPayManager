@@ -174,12 +174,12 @@ catdance124
 
 ### getInstance()
 
-> `static` **getInstance**(): [`LogDebugSheet`](LogDebugSheet.md)
+> `static` **getInstance**(): `LogDebugSheet`
 
 シングルトンインスタンスを取得する
 
 #### Returns
 
-[`LogDebugSheet`](LogDebugSheet.md)
+`LogDebugSheet`
 
 シングルトンインスタンス

@@ -18,13 +18,13 @@ catdance124
 
 ## Constructors
 
-### new Config()
+### Constructor
 
-> **new Config**(): [`Config`](Config.md)
+> **new Config**(): `Config`
 
 #### Returns
 
-[`Config`](Config.md)
+`Config`
 
 ## Properties
 

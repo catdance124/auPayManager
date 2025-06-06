@@ -14,15 +14,15 @@ catdance124
 
 ## Constructors
 
-### new LineManager()
+### Constructor
 
-> **new LineManager**(): [`LineManager`](LineManager.md)
+> **new LineManager**(): `LineManager`
 
 コンストラクタ
 
 #### Returns
 
-[`LineManager`](LineManager.md)
+`LineManager`
 
 ## Methods
 

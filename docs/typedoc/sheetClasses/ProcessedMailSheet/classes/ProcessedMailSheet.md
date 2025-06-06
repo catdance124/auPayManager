@@ -170,12 +170,12 @@ catdance124
 
 ### getInstance()
 
-> `static` **getInstance**(): [`ProcessedMailSheet`](ProcessedMailSheet.md)
+> `static` **getInstance**(): `ProcessedMailSheet`
 
 シングルトンインスタンスを取得する
 
 #### Returns
 
-[`ProcessedMailSheet`](ProcessedMailSheet.md)
+`ProcessedMailSheet`
 
 シングルトンインスタンス

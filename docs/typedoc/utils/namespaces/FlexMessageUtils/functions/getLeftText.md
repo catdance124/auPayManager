@@ -6,7 +6,7 @@
 
 # Function: \_getLeftText()
 
-> **\_getLeftText**(`text`, `size`?): [`flexMessageText`](../../../../interfaces/interfaces/flexMessageText.md)
+> **\_getLeftText**(`text`, `size?`): [`flexMessageText`](../../../../interfaces/interfaces/flexMessageText.md)
 
 左寄せのテキスト要素を生成する
 

@@ -18,19 +18,19 @@ catdance124
 
 ## Constructors
 
-### new CreditCardPaymentMail()
+### Constructor
 
-> **new CreditCardPaymentMail**(): [`CreditCardPaymentMail`](CreditCardPaymentMail.md)
+> **new CreditCardPaymentMail**(): `CreditCardPaymentMail`
 
 コンストラクタ
 
 #### Returns
 
-[`CreditCardPaymentMail`](CreditCardPaymentMail.md)
+`CreditCardPaymentMail`
 
 #### Overrides
 
-[`Mail`](../../_Mail/classes/Mail.md).[`constructor`](../../_Mail/classes/Mail.md#constructors)
+[`Mail`](../../_Mail/classes/Mail.md).[`constructor`](../../_Mail/classes/Mail.md#constructor)
 
 ## Properties
 

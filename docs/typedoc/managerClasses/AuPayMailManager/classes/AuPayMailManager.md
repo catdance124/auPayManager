@@ -14,15 +14,15 @@ catdance124
 
 ## Constructors
 
-### new AuPayMailManager()
+### Constructor
 
-> **new AuPayMailManager**(): [`AuPayMailManager`](AuPayMailManager.md)
+> **new AuPayMailManager**(): `AuPayMailManager`
 
 コンストラクタ
 
 #### Returns
 
-[`AuPayMailManager`](AuPayMailManager.md)
+`AuPayMailManager`
 
 ## Methods
 

@@ -21,9 +21,9 @@ catdance124
 
 ## Constructors
 
-### new Sheet()
+### Constructor
 
-> `protected` **new Sheet**(`headers`, `sheetName`): [`Sheet`](Sheet.md)
+> `protected` **new Sheet**(`headers`, `sheetName`): `Sheet`
 
 コンストラクタ
 
@@ -43,7 +43,7 @@ catdance124
 
 #### Returns
 
-[`Sheet`](Sheet.md)
+`Sheet`
 
 ## Properties
 

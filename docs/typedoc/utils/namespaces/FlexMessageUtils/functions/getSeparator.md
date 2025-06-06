@@ -6,7 +6,7 @@
 
 # Function: \_getSeparator()
 
-> **\_getSeparator**(`margin`?): [`flexMessageSeparator`](../../../../interfaces/interfaces/flexMessageSeparator.md)
+> **\_getSeparator**(`margin?`): [`flexMessageSeparator`](../../../../interfaces/interfaces/flexMessageSeparator.md)
 
 セパレータ要素を生成する
 

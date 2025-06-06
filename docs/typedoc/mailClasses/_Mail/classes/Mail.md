@@ -22,9 +22,9 @@ catdance124
 
 ## Constructors
 
-### new Mail()
+### Constructor
 
-> `protected` **new Mail**(`mailSubject`): [`Mail`](Mail.md)
+> `protected` **new Mail**(`mailSubject`): `Mail`
 
 コンストラクタ
 
@@ -38,7 +38,7 @@ catdance124
 
 #### Returns
 
-[`Mail`](Mail.md)
+`Mail`
 
 ## Properties
 

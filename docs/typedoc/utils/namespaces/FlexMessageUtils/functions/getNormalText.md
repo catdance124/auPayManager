@@ -6,7 +6,7 @@
 
 # Function: \_getNormalText()
 
-> **\_getNormalText**(`text`, `size`?): [`flexMessageText`](../../../../interfaces/interfaces/flexMessageText.md)
+> **\_getNormalText**(`text`, `size?`): [`flexMessageText`](../../../../interfaces/interfaces/flexMessageText.md)
 
 通常のテキスト要素を生成する
 

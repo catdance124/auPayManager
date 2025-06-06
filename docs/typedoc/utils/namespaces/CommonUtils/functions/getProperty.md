@@ -6,7 +6,7 @@
 
 # Function: getProperty()
 
-> **getProperty**(`key`): `string` \| `null`
+> **getProperty**(`key`): `null` \| `string`
 
 スクリプトプロパティからitemをゲットする
 
@@ -20,4 +20,4 @@
 
 ## Returns
 
-`string` \| `null`
+`null` \| `string`

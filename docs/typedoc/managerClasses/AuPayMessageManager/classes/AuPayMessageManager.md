@@ -14,15 +14,15 @@ catdance124
 
 ## Constructors
 
-### new AuPayMessageManager()
+### Constructor
 
-> **new AuPayMessageManager**(): [`AuPayMessageManager`](AuPayMessageManager.md)
+> **new AuPayMessageManager**(): `AuPayMessageManager`
 
 コンストラクタ
 
 #### Returns
 
-[`AuPayMessageManager`](AuPayMessageManager.md)
+`AuPayMessageManager`
 
 ## Methods
 

@@ -6,7 +6,7 @@
 
 # Function: \_getHorizontalBox()
 
-> **\_getHorizontalBox**(`contents`, `margin`?, `spacing`?): [`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
+> **\_getHorizontalBox**(`contents`, `margin?`, `spacing?`): [`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
 
 横方向のBox要素を生成する
 

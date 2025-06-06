@@ -148,12 +148,12 @@ catdance124
 
 ### getInstance()
 
-> `static` **getInstance**(): [`QrPayReportSheet`](QrPayReportSheet.md)
+> `static` **getInstance**(): `QrPayReportSheet`
 
 シングルトンインスタンスを取得する
 
 #### Returns
 
-[`QrPayReportSheet`](QrPayReportSheet.md)
+`QrPayReportSheet`
 
 シングルトンインスタンス

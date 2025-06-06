@@ -6,7 +6,7 @@
 
 # Function: \_getBox()
 
-> **\_getBox**(`contents`, `layout`?, `margin`?, `spacing`?): [`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
+> **\_getBox**(`contents`, `layout?`, `margin?`, `spacing?`): [`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
 
 Box要素を生成する
 

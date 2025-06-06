@@ -6,7 +6,7 @@
 
 # Function: \_getVerticalBox()
 
-> **\_getVerticalBox**(`contents`, `margin`?, `spacing`?): [`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
+> **\_getVerticalBox**(`contents`, `margin?`, `spacing?`): [`flexMessageBox`](../../../../interfaces/interfaces/flexMessageBox.md)
 
 縦方向のBox要素を生成する
 

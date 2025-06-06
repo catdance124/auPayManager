@@ -298,12 +298,12 @@ catdance124
 
 ### getInstance()
 
-> `static` **getInstance**(): [`CreditCardReportSheet`](CreditCardReportSheet.md)
+> `static` **getInstance**(): `CreditCardReportSheet`
 
 シングルトンインスタンスを取得する
 
 #### Returns
 
-[`CreditCardReportSheet`](CreditCardReportSheet.md)
+`CreditCardReportSheet`
 
 シングルトンインスタンス

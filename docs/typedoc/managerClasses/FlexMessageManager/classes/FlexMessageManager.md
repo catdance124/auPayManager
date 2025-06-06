@@ -14,13 +14,13 @@ catdance124
 
 ## Constructors
 
-### new FlexMessageManager()
+### Constructor
 
-> **new FlexMessageManager**(): [`FlexMessageManager`](FlexMessageManager.md)
+> **new FlexMessageManager**(): `FlexMessageManager`
 
 #### Returns
 
-[`FlexMessageManager`](FlexMessageManager.md)
+`FlexMessageManager`
 
 ## Methods
 
@@ -48,7 +48,7 @@ Flex Message
 
 ### createCreditCardUsageFlexMessage()
 
-> **createCreditCardUsageFlexMessage**(`creditCardUsageReport`, `paymentNote`?): [`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
+> **createCreditCardUsageFlexMessage**(`creditCardUsageReport`, `paymentNote?`): [`flexMessage`](../../../interfaces/interfaces/flexMessage.md)[]
 
 クレジットカード利用のFlex Messageを生成する
 

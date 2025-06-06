@@ -14,9 +14,9 @@ catdance124
 
 ## Constructors
 
-### new SheetAccessor()
+### Constructor
 
-> **new SheetAccessor**(`headers`, `sheetName`): [`SheetAccessor`](SheetAccessor.md)
+> **new SheetAccessor**(`headers`, `sheetName`): `SheetAccessor`
 
 コンストラクタ
 
@@ -36,7 +36,7 @@ catdance124
 
 #### Returns
 
-[`SheetAccessor`](SheetAccessor.md)
+`SheetAccessor`
 
 ## Methods
 

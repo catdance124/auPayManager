@@ -18,19 +18,19 @@ catdance124
 
 ## Constructors
 
-### new QrPayUsageMail()
+### Constructor
 
-> **new QrPayUsageMail**(): [`QrPayUsageMail`](QrPayUsageMail.md)
+> **new QrPayUsageMail**(): `QrPayUsageMail`
 
 コンストラクタ
 
 #### Returns
 
-[`QrPayUsageMail`](QrPayUsageMail.md)
+`QrPayUsageMail`
 
 #### Overrides
 
-[`Mail`](../../_Mail/classes/Mail.md).[`constructor`](../../_Mail/classes/Mail.md#constructors)
+[`Mail`](../../_Mail/classes/Mail.md).[`constructor`](../../_Mail/classes/Mail.md#constructor)
 
 ## Properties
 

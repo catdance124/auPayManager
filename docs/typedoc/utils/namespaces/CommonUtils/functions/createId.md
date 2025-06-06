@@ -6,7 +6,7 @@
 
 # Function: createId()
 
-> **createId**(`myStrong`?): `string`
+> **createId**(`myStrong?`): `string`
 
 タイムスタンプを16進数に変換しIDを生成する
 
