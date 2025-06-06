@@ -134,7 +134,7 @@ export class AuPayMailManager {
 
         // 未処理のメールを走査して処理する
         for (let mail of mails) {
-            const id = mail.getId();
+            const id = "M" + mail.getId();
             // シート記載の処理済みはskip
             const isProcessed = processedMailSheet.existId(id);
             if (isProcessed) {
